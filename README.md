@@ -1,2 +1,5 @@
 # Hust_DS_Tranining
-Questions form Data Structure written by Tsinghua University.
+> questions form Data Structure written by Tsinghua University.
+
+### Sept 17th
+* Add two solution, I am a big vegetable chicken.
