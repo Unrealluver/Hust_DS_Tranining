@@ -2,4 +2,7 @@
 > questions form Data Structure written by Tsinghua University.
 
 ### Sept 17th
-* Add two solution, I am a big vegetable chicken.
+* Add two solutions, I am a big vegetable chicken.
+
+### Sept 18th
+* Add five solutions.
