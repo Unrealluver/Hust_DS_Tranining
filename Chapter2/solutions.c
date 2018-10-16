@@ -84,16 +84,75 @@ Status LinkListCat (LinkList &a, LinkList &b, int alength, int blength, LinkList
 // 2.16
 Status DeleteAndInsertSub (LinkList la, LinkList lb, int i, int j, int len) {
     if (i < 0 || j < 0 || len < 0) return INFEASIBLE;
-    p = la;
-    k = l;
+    LinkList p = la;
+    int k = 1;
     while (k <= i) {
         p = p -> next;
         k++;
     }
-    q = p;
+    LinkList q = p;
     k = 1;
-    while (k <= len) 
+    while (k <= len) {
+        q = q -> next;
+        k++;
     }
+    LinkList s = lb;
+    k = 1;
+    while (k < j - 1) {
+        s = s -> next;
+        k++;
+    }
+    q -> next = s -> next;
+    s -> next = p;
+    return OK;
+}
+
+// 2.17 含头结点
+void INSERT (LinkList L, int i, LNode b) {
+    if (i == 0) {
+        b.next = L -> next;
+        L -> next = &b;
+    } 
+    else {
+        INSERT (L -> next, i-1, b);
+    }
+}
+
+// 2.18 含头结点
+void DELETE (LinkList L, int i) {
+    // 因为链表单向传递，所以删除首元素时得提前一位
+    if (i == 1) {
+        L = L -> next;
+    }
+    else {
+        DELETE (L -> next, i-1);
+    }
+}
+
+// 2.19 
+Status DeleteElement(LinkList L, ElemType mink, ElemType maxk) {
+    if (L == NULL)
+        return OK;
+    LinkList* tmp;
+    while (L -> data < mink) {
+        L = L -> next;
+        if (L == NULL) {
+            break;
+        }
+    }
+    tmp = &L;
+    LinkList token;
+    while (L -> data > mink && L -> data < maxk) {
+        token = L;
+        L = L -> next;
+        free(token);
+        if (L == NULL) {
+            break;
+        }
+    }
+    *tmp = L; 
+}
+
 int main () {
   printf("It seems all right!\n");
 }
